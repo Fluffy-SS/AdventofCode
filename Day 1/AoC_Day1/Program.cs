@@ -17,16 +17,17 @@ namespace AoC_Day1
         private static List<Point> recentPositions = new List<Point>();
 
         // first position santa hits twice - part B
-        private static Point firstLocVisitTwice;
+        private static Point visitTwicePos;
 
         // tell if first position has been hit - part B
-        private static bool gotFirstPosVisitTwice = false;
+        private static bool alreadyVisited = false;
 
 
         static void Main(string[] args)
         {
             // direction input puzzle
-            string allInputs = "L5, R1, L5, L1, R5, R1, R1, L4, L1, L3, R2, R4, L4, L1, L1, R2, R4, R3, L1, R4, L4, L5, L4, R4, L5, R1, R5, L2, R1, R3, L2, L4, L4, R1, L192, R5, R1, R4, L5, L4, R5, L1, L1, R48, R5, R5, L2, R4, R4, R1, R3, L1, L4, L5, R1, L4, L2, L5, R5, L2, R74, R4, L1, R188, R5, L4, L2, R5, R2, L4, R4, R3, R3, R2, R1, L3, L2, L5, L5, L2, L1, R1, R5, R4, L3, R5, L1, L3, R4, L1, L3, L2, R1, R3, R2, R5, L3, L1, L1, R5, L4, L5, R5, R2, L5, R2, L1, L5, L3, L5, L5, L1, R1, L4, L3, L1, R2, R5, L1, L3, R4, R5, L4, L1, R5, L1, R5, R5, R5, R2, R1, R2, L5, L5, L5, R4, L5, L4, L4, R5, L2, R1, R5, L1, L5, R4, L3, R4, L2, R3, R3, R3, L2, L2, L2, L1, L4, R3, L4, L2, R2, R5, L1, R2";
+            // Read the file as one string.
+            string allInputs = System.IO.File.ReadAllText(@"C:\Users\Sean Spalding\Documents\AdventofCode\Day 1\puzzle input.txt");
 
             // split the inputs so we can go step by step, seperate by the comma
             string[] splitInputs = Regex.Split(allInputs, ", ");
@@ -63,7 +64,7 @@ namespace AoC_Day1
 
             //check the result
             Console.WriteLine("Santa is " + Math.Abs(position.X + position.Y) + " blocks away due " + facing + " of the initial starting position");
-            Console.WriteLine(Math.Abs(firstLocVisitTwice.X - firstLocVisitTwice.Y) + " Blocks away is the first location Santa visited twice"); // - part B
+            Console.WriteLine(Math.Abs(visitTwicePos.X - visitTwicePos.Y) + " Blocks away is the first location Santa visited twice"); // - part B
             Console.Read();
         }
 
@@ -92,7 +93,7 @@ namespace AoC_Day1
             for (int i = 0; i < blocksToMove; i++)
             {
                 // check if we have completed our position duplicate check - part B
-                if (!gotFirstPosVisitTwice)
+                if (!alreadyVisited)
                 {
                     // Check if we have been in this position before - part B
                     foreach (Point item in recentPositions)
@@ -100,8 +101,8 @@ namespace AoC_Day1
                         // If the location matches an item in the list - part B
                         if (position == item)
                         {
-                            firstLocVisitTwice = item;
-                            gotFirstPosVisitTwice = true;
+                            visitTwicePos = item;
+                            alreadyVisited = true;
                             continue;
                         }
                     }
