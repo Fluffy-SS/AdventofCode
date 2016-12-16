@@ -1,0 +1,7 @@
+C:\Users\Sean Spalding\Documents\Advent Of Code\AoC_Day1\AoC_Day1\bin\Debug\AoC_Day1.exe.config
+C:\Users\Sean Spalding\Documents\Advent Of Code\Day 1\AoC_Day1\bin\Debug\AoC_Day1.exe.config
+C:\Users\Sean Spalding\Documents\Advent Of Code\Day 1\AoC_Day1\bin\Debug\AoC_Day1.exe
+C:\Users\Sean Spalding\Documents\Advent Of Code\Day 1\AoC_Day1\bin\Debug\AoC_Day1.pdb
+C:\Users\Sean Spalding\Documents\Advent Of Code\Day 1\AoC_Day1\obj\Debug\AoC_Day1.csprojResolveAssemblyReference.cache
+C:\Users\Sean Spalding\Documents\Advent Of Code\Day 1\AoC_Day1\obj\Debug\AoC_Day1.exe
+C:\Users\Sean Spalding\Documents\Advent Of Code\Day 1\AoC_Day1\obj\Debug\AoC_Day1.pdb
