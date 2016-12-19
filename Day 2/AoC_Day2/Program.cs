@@ -23,18 +23,32 @@ namespace AoC_Day2
     {
 
         //array of 3 rows and 2 columns
-        private const int ROWS = 3;
-        private const int COL = 3;
-        private static string[,] keypad = new string[ROWS, COL] { { "1", "2", "3" },           //0,0 0,1 0,2
-                                                                  { "4", "5", "6" },           //1,0 1,1 1,2
-                                                                  { "7", "8", "9" } };         //2,0 2,1 2,2
+        private const int ROWS = 5;
+        private const int COL = 5;
+
+        //part A pad
+        //private static string[,] keypad = new string[ROWS, COL] { { "1", "2", "3" },          
+                                                                    //{ "4", "5", "6" },          
+                                                                    //{ "7", "8", "9" } };         
+
+        // part B pad
+        private static string[,] keypad = new string[ROWS, COL] { { null, null, "1", null, null},           
+                                                                  { null, "2", "3", "4", null},           
+                                                                  { "5", "6", "7", "8", "9"},
+                                                                  { null, "A", "B", "C", null},
+                                                                  { null, null, "D", null, null}};
+
+
 
         //code to enter
         private static string code = "";
 
         //starting position
-        private static int x = 1;
-        private static int y = 1;
+       // private static int x = 1; //part a
+       // private static int y = 1; //part a
+
+        private static int x = 0;
+        private static int y = 2;
 
         static void Main(string[] args)
         {
@@ -74,31 +88,46 @@ namespace AoC_Day2
         private static void move(char direction)
         {
             // where to move on keypad
+            //NOTE - cleaned up function from part A. Include the boundry check within the switch statement before doing a move, part b uses this also.
             switch (direction)
             {
                 case 'U':
-                    y--;
+                    if (y - 1 >= 0) //making sure you are in the keypad boundries
+                    {
+                        if (keypad[y - 1, x] != null) //checking you are not moving into a null position
+                        {
+                            y--;
+                        }
+                    }
                     break;
                 case 'R':
-                    x++;
+                    if (x + 1 < 5)
+                    {
+                        if (keypad[y, x + 1] != null)
+                        {
+                            x++;
+                        }
+                    }
                     break;
                 case 'D':
-                    y++;
+                    if (y + 1 < 5)
+                    {
+                        if (keypad[y + 1, x] != null)
+                        {
+                            y++;
+                        }
+                    }
                     break;
                 case 'L':
-                    x--;
+                    if (x - 1 >= 0)
+                    {
+                        if (keypad[y, x - 1] != null)
+                        {
+                            x--;
+                        }
+                    }
                     break;
             }
-
-            // out of bounds check
-            if (x > 2) //furthest right
-                x = 2;
-            else if (x < 0) //furthest left
-                x = 0;
-            else if (y > 2) //furthest down
-                y = 2;
-            else if (y < 0) //furthest up
-                y = 0;
         }
     }
 }
