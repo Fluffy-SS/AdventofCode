@@ -11,14 +11,16 @@ namespace AoC_Day3
     {
         static void Main(string[] args)
         {
+            //======TODO
             //get input
             //store 3 values in a vec3
-            //if x + y > z & x + z > y & y + z > x then this is a triangle, counter ++
+            //if x + y > z & x + z > y & y + z > x then this is a triangle, counter++
+            //================================================
 
-            // Store input in 3D point
+            // Store input in vec3 class
             List<Vec3> triangles = new List<Vec3>();
 
-            //string to store current line
+            //read input from file
             string[] input = System.IO.File.ReadAllLines(@"C:\Users\Sean Spalding\Documents\AdventofCode\Day 3\puzzle input.txt");
 
             // Loop through all lines
@@ -32,7 +34,7 @@ namespace AoC_Day3
                 int y = int.Parse(splitInput[1]);
                 int z = int.Parse(splitInput[2]);
 
-                // Check if the triangle is legit
+                // Check if valid
                 if (((x + y) > z) &&
                     ((x + z) > y) &&
                     ((y + z) > x))
@@ -42,11 +44,8 @@ namespace AoC_Day3
                 }
             }
 
-            // Output
             Console.WriteLine("Amount of valid triangles is " + triangles.Count);
             Console.Read();
-
-
         }
     }
 }
