@@ -28,16 +28,15 @@ namespace AoC_Day2
 
         //part A pad
         //private static string[,] keypad = new string[ROWS, COL] { { "1", "2", "3" },          
-                                                                    //{ "4", "5", "6" },          
-                                                                    //{ "7", "8", "9" } };         
+        //{ "4", "5", "6" },          
+        //{ "7", "8", "9" } };         
 
         // part B pad
-        private static string[,] keypad = new string[ROWS, COL] { { null, null, "1", null, null},           
-                                                                  { null, "2", "3", "4", null},           
+        private static string[,] keypad = new string[ROWS, COL] { { null, null, "1", null, null},
+                                                                  { null, "2", "3", "4", null},
                                                                   { "5", "6", "7", "8", "9"},
                                                                   { null, "A", "B", "C", null},
                                                                   { null, null, "D", null, null}};
-
 
 
         //code to enter
