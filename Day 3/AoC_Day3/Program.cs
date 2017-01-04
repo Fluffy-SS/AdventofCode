@@ -40,28 +40,31 @@ namespace AoC_Day3
                 //Part A
                 //triangles.Add(new Vec3(x, y, z));
 
+                //add current line to list
                 list.Add(new Line(x, y, z));
             }
 
             //Part B
-            for (int i = 0; i< list.Count; i += 3)
+            for (int i = 0; i < list.Count; i += 3)
             {
+                //create list to store new points of vertical data
                 List<Line> temp = new List<Line>();
                 temp.Add(list[i]);
                 temp.Add(list[i + 1]);
                 temp.Add(list[i + 2]);
 
+                //get vertical points 
                 for (int j = 0; j < 3; j++)
                 {
                     int x = temp[0].Get(j);
                     int y = temp[1].Get(j);
                     int z = temp[2].Get(j);
 
-                // Check if valid
-                //Parts A & B
-                if (((x + y) > z) &&
-                    ((x + z) > y) &&
-                    ((y + z) > x))
+                    // Check if valid
+                    //Parts A & B
+                    if (((x + y) > z) &&
+                        ((x + z) > y) &&
+                        ((y + z) > x))
                     {
                         count++;
                         //if part A then replace above with triangles.add code
@@ -72,16 +75,12 @@ namespace AoC_Day3
             //Part A
             //triangles.Add(new Vec3(int.Parse(splitInput[0]), int.Parse(splitInput[1]), int.Parse(splitInput[2])));
 
+            // Part B
+            Console.WriteLine("Amount of triangles: " + count);
 
-
-        
-
-        // Part B
-        Console.WriteLine("Amount of triangles: " + count);
-
-         //Part A
-        // Console.WriteLine("Amount of valid triangles is " + triangles.Count);
-        Console.Read();
+            //Part A
+            // Console.WriteLine("Amount of valid triangles is " + triangles.Count);
+            Console.Read();
         }
     }
 }
