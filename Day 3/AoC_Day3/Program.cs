@@ -11,17 +11,20 @@ namespace AoC_Day3
     {
         static void Main(string[] args)
         {
-            //======TODO
-            //get input
-            //store 3 values in a vec3
-            //if x + y > z & x + z > y & y + z > x then this is a triangle, counter++
-            //================================================
-
             // Store input in vec3 class
-            List<Vec3> triangles = new List<Vec3>();
+            //Part A
+            //List<Vec3> triangles = new List<Vec3>();
+
+            //keep track of valid triangles
+            //Part B
+            int count = 0;
 
             //read input from file
             string[] input = System.IO.File.ReadAllLines(@"C:\Users\Sean Spalding\Documents\AdventofCode\Day 3\puzzle input.txt");
+
+            //store lines in a list
+            //Part B
+            List<Line> list = new List<Line>();
 
             // Loop through all lines
             for (int i = 0; i < input.Length; i++)
@@ -34,18 +37,51 @@ namespace AoC_Day3
                 int y = int.Parse(splitInput[1]);
                 int z = int.Parse(splitInput[2]);
 
+                //Part A
+                //triangles.Add(new Vec3(x, y, z));
+
+                list.Add(new Line(x, y, z));
+            }
+
+            //Part B
+            for (int i = 0; i< list.Count; i += 3)
+            {
+                List<Line> temp = new List<Line>();
+                temp.Add(list[i]);
+                temp.Add(list[i + 1]);
+                temp.Add(list[i + 2]);
+
+                for (int j = 0; j < 3; j++)
+                {
+                    int x = temp[0].Get(j);
+                    int y = temp[1].Get(j);
+                    int z = temp[2].Get(j);
+
                 // Check if valid
+                //Parts A & B
                 if (((x + y) > z) &&
                     ((x + z) > y) &&
                     ((y + z) > x))
-                {
-                    // Add splitted line to list
-                    triangles.Add(new Vec3(int.Parse(splitInput[0]), int.Parse(splitInput[1]), int.Parse(splitInput[2])));
+                    {
+                        count++;
+                        //if part A then replace above with triangles.add code
+                    }
                 }
             }
 
-            Console.WriteLine("Amount of valid triangles is " + triangles.Count);
-            Console.Read();
+            //Part A
+            //triangles.Add(new Vec3(int.Parse(splitInput[0]), int.Parse(splitInput[1]), int.Parse(splitInput[2])));
+
+
+
+        
+
+        // Part B
+        Console.WriteLine("Amount of triangles: " + count);
+
+         //Part A
+        // Console.WriteLine("Amount of valid triangles is " + triangles.Count);
+        Console.Read();
         }
     }
 }
