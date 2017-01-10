@@ -11,6 +11,7 @@ namespace AoC_Day4
         private static char[] alpha = "abcdefghijklmnopqrstuvwxyz".ToCharArray();   // Alphabet array
         private int[] letters;                          // Occurence of each letter in the string
         private string checksum;                        // Checksum
+        private string encryptedName;                   // Encrypted name of the room
         public int SectorId { get; private set; }       // Sector ID
 
         public Room(string roomName)
@@ -34,6 +35,9 @@ namespace AoC_Day4
                 }
                 else
                 {
+                    // Get the full encrypted name
+                    encryptedName = roomName.Substring(0, i - 4);
+
                     // Get the sector id
                     SectorId = int.Parse(roomName.Substring(i - 3, 3));
 
@@ -83,6 +87,44 @@ namespace AoC_Day4
                     return i;
             }
             throw new ArgumentOutOfRangeException("Invalid letter.");
+        }
+
+        public string Decrypted()
+        {
+            // Store all decrypted chars
+            List<char> decryptedchar = new List<char>();
+
+            // Loop through the name
+            for (int i = 0; i < encryptedName.Length; i++)
+            {
+                // Replace - with a space
+                if (encryptedName[i] == '-')
+                {
+                    decryptedchar.Add(' ');
+                }
+                else
+                {
+                    // Get the int value of the current char
+                    int temp = encryptedName[i];
+
+                    // Increment with the sector id
+                    for (int j = 0; j < SectorId; j++)
+                    {
+                        temp++;
+                        if (temp > 122)     // Ascii value for z
+                            temp = 97;      // Ascii value for a
+                    }
+
+                    // Add the decrypted char
+                    decryptedchar.Add(Convert.ToChar(temp));
+                }
+            }
+
+            // Full decrypted string
+            string decrypted = "";
+            foreach (char c in decryptedchar) { decrypted += c; }
+
+            return decrypted;
         }
     }
 }
